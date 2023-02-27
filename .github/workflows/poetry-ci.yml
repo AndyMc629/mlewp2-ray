@@ -19,6 +19,8 @@ jobs:
         poetry-version-key: ["poetry-1.3.2-0"]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
+    defaults:
+      working-directory: mlewp2 #after bug not finding pyproject.toml
     steps:
       - uses: actions/checkout@v2
       - name: Debug
@@ -80,7 +82,7 @@ jobs:
       # itself", which is what you want to avoid caching _your_ code. The `if` statement
       # ensures this only runs on a cache miss.
       - name: Install dependencies
-        working-directory: ${{ github.action_path }}   
+        #working-directory: ${{ github.action_path }}   
         run: poetry install --no-interaction --no-root
         if: steps.cache-deps.outputs.cache-hit != 'true'
 
