@@ -20,7 +20,8 @@ jobs:
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     defaults:
-      working-directory: mlewp2 #after bug not finding pyproject.toml
+      run:
+        working-directory: mlewp2 #after bug not finding pyproject.toml
     steps:
       - uses: actions/checkout@v2
       - name: Debug
